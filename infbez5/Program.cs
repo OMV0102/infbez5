@@ -19,10 +19,10 @@ namespace infbez5
             Application.Run(new Form1());
         }
     }
-    
 
     static public class alg
     {
+        // Проверка числа на простоту методом пробных делений и решета эратосфена
         static public bool is_simple(Int64 n)
         {
             Int64 sqrt_n = (Int64)Math.Sqrt(Convert.ToDouble(n));
@@ -35,27 +35,44 @@ namespace infbez5
             }
             
             // Оставили в списке только просто числа от 2 до корня из n
-            for(int j = 0; j < d_list.Count; j++)
+            for(int i = 0; i < d_list.Count; i++)
             {
-                for(int k = j; k < d_list.Count; k++)
+                for(int k = i+1; k < d_list.Count; k++)
                 {
-                    if(d_list[k] % d_list[j] == 0)
+                    if(d_list[k] % d_list[i] == 0)
                     {
                         d_list.RemoveAt(k);
                     }
                 }
             }
 
-            Int64[] d_array = new Int64[n - 2];
-            for(Int64 d = 0; d <= sqrt_n; d++)
-            {
+            bool prostoe = true;
 
+            for(int j = 0; prostoe == true && j < d_list.Count; j++)
+            {
+                if(n % d_list[j] == 0)
+                {
+                    prostoe = false;
+                }
             }
 
-            //UInt64 d = 2;
+            return prostoe;
+        }
+
+        public struct factor // Структруа для хранения одного множителя
+        {
+            public static Int64 num;
+            public static Int64 deg;
+        }
+
+        static public Int64 find_factor (Int64 n)
+        {
 
 
-            return false;
+
+
+
+            return 1; 
         }
     }
 }

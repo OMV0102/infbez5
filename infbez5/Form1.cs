@@ -16,10 +16,5 @@ namespace infbez5
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            alg.is_simple(10);
-        }
     }
 }
