@@ -55,6 +55,7 @@
             this.btn_factor.TabStop = false;
             this.btn_factor.Text = "Разложить\r\nна множители";
             this.btn_factor.UseVisualStyleBackColor = false;
+            this.btn_factor.Click += new System.EventHandler(this.btn_factor_Click);
             // 
             // txt_number
             // 

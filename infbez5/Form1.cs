@@ -70,5 +70,11 @@ namespace infbez5
                 MessageBox.Show("Выбранного файла \"" + path + "\" не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btn_factor_Click(object sender, EventArgs e)
+        {
+            alg.find_factor(19);
+
+        }
     }
 }

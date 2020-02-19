@@ -97,19 +97,18 @@ namespace infbez5
                         Int64 B = (Int64)Math.Sqrt(Math.Pow(A, 2.0) - 4.0 * k * n);
                         Int64 nod_plus = alg.GCD(A + B, n);
                         Int64 nod_minus = alg.GCD(A - B, n);
-                        if (1 < nod_plus && nod_plus < n)
-                        {
-                            return nod_plus;
-                        }
-                        else if (1 < nod_minus && nod_minus < n)
+                        if (1 < nod_minus && nod_minus < n)
                         {
                             return nod_minus;
                         }
-                        else
-                            return -1;
+                        else if (1 < nod_plus && nod_plus < n)
+                        {
+                            return nod_plus;
+                        }
                     }
                 }
             }
+            return -1;
         }
 
         // Проверяет является ли число x полным квадратом натурального числа
