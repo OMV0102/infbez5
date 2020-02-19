@@ -77,9 +77,9 @@ namespace infbez5
             // и переделан под C#
 
             Int64 sqrt_n = (Int64)Math.Pow(n,1.0/3.0); // [n^1/3]
-            for (Int64 a = 2; a <= sqrt_n; a++)
+            for (Int64 a = 2; a <= sqrt_n+2; a++)
             {
-                if(a % n == 0)
+                if(n % a == 0)
                 {
                     return a;
                 }
@@ -124,7 +124,7 @@ namespace infbez5
         }
 
         // Поиск НОД у двух чисел
-        static Int64 GCD(Int64 a, Int64 b)
+        static public Int64 GCD(Int64 a, Int64 b)
         {
             while (b != 0)
             {

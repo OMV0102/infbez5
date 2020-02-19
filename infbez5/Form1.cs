@@ -73,7 +73,7 @@ namespace infbez5
 
         private void btn_factor_Click(object sender, EventArgs e)
         {
-            alg.find_factor(19);
+            alg.find_factor(21);
 
         }
     }
