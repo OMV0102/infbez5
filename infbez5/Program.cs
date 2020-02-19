@@ -94,7 +94,19 @@ namespace infbez5
                     if(alg.isSquare(kn) == true)
                     {
                         Int64 A = ((Int64)Math.Sqrt(4.0 * k * n)) + d;
-                        Int64 B = 
+                        Int64 B = (Int64)Math.Sqrt(Math.Pow(A, 2.0) - 4.0 * k * n);
+                        Int64 nod_plus = alg.GCD(A + B, n);
+                        Int64 nod_minus = alg.GCD(A - B, n);
+                        if (1 < nod_plus && nod_plus < n)
+                        {
+                            return nod_plus;
+                        }
+                        else if (1 < nod_minus && nod_minus < n)
+                        {
+                            return nod_minus;
+                        }
+                        else
+                            return -1;
                     }
                 }
             }
@@ -112,6 +124,17 @@ namespace infbez5
             else return true;
         }
 
+        // Поиск НОД у двух чисел
+        static Int64 GCD(Int64 a, Int64 b)
+        {
+            while (b != 0)
+            {
+                Int64 t = b;
+                b = a % b;
+                a = t;
+            }
+            return a;
+        }
 
     }
 }
