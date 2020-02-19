@@ -46,6 +46,7 @@ namespace infbez5
                     {
                         if (chislo >= txt_number.Minimum && chislo <= txt_number.Maximum)
                         {
+                            txt_file_in.Text = path;
                             txt_number.Value = chislo;
                             // Запуск Алгоритма факторизации
                         }
