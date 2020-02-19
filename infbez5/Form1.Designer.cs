@@ -71,10 +71,11 @@
             0,
             0});
             this.txt_number.Name = "txt_number";
-            this.txt_number.Size = new System.Drawing.Size(120, 38);
+            this.txt_number.Size = new System.Drawing.Size(190, 38);
             this.txt_number.TabIndex = 1;
             this.txt_number.TabStop = false;
             this.txt_number.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_number.ThousandsSeparator = true;
             this.txt_number.Value = new decimal(new int[] {
             1,
             0,

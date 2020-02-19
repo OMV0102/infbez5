@@ -21,8 +21,10 @@ namespace infbez5
         // кнопка ВЫБРАТЬ ФАЙЛ
         private void btn_file_Click(object sender, EventArgs e)
         {
+            string path = "";
             string tmp = "";
             OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = "Текстовые файлы|*.txt";
             opf.Title = "Выбрать файл ..."; // Заголовок окна
             //Начальный путь в окне - папка проекта
             opf.InitialDirectory = Application.StartupPath;
@@ -31,16 +33,40 @@ namespace infbez5
             if (opf.ShowDialog() == DialogResult.OK)
             {
                 // получаем путь С НАЗВАНИЕМ файла
-                tmp = opf.FileName;
+                path = opf.FileName;
             }
 
-            if(File.Exists(tmp) == true)
+            Int64 chislo = 0;
+            if(File.Exists(path) == true)
             {
-                
+                tmp = File.ReadAllText(path);
+                if(tmp.Length > 0)
+                {
+                    if(Int64.TryParse(tmp, out chislo))
+                    {
+                        if (chislo >= txt_number.Minimum && chislo <= txt_number.Maximum)
+                        {
+                            txt_number.Value = chislo;
+                            // Запуск Алгоритма факторизации
+                        }
+                        else
+                        {
+                            MessageBox.Show("Считанное число должно быть в границах от " + txt_number.Minimum + " до " + txt_number.Maximum +"!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Число из файла \"" + path + "\" не считалось!\nПроверьте данные в файле или выберите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Файл \"" + path + "\" пуст!\nПроверьте данные в файле или выберите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Выбранного файла \"" + tmp + "\" не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выбранного файла \"" + path + "\" не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

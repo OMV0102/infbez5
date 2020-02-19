@@ -67,7 +67,7 @@ namespace infbez5
 
         static public Int64 find_factor (Int64 n)
         {
-
+            
 
 
 
