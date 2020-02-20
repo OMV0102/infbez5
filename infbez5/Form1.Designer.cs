@@ -34,6 +34,8 @@
             this.btn_file = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txt_factors = new System.Windows.Forms.Label();
+            this.label_factors = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txt_number)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,6 +84,7 @@
             0,
             0,
             0});
+            this.txt_number.ValueChanged += new System.EventHandler(this.txt_number_ValueChanged);
             this.txt_number.Scroll += new System.Windows.Forms.ScrollEventHandler(this.txt_number_Scroll);
             // 
             // txt_file_in
@@ -132,12 +135,32 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Файл:";
             // 
+            // txt_factors
+            // 
+            this.txt_factors.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_factors.Location = new System.Drawing.Point(312, 372);
+            this.txt_factors.Name = "txt_factors";
+            this.txt_factors.Size = new System.Drawing.Size(100, 116);
+            this.txt_factors.TabIndex = 6;
+            this.txt_factors.Text = "222555555";
+            // 
+            // label_factors
+            // 
+            this.label_factors.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_factors.Location = new System.Drawing.Point(35, 372);
+            this.label_factors.Name = "label_factors";
+            this.label_factors.Size = new System.Drawing.Size(233, 35);
+            this.label_factors.TabIndex = 7;
+            this.label_factors.Text = "Множители числа:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(576, 522);
+            this.ClientSize = new System.Drawing.Size(576, 520);
+            this.Controls.Add(this.label_factors);
+            this.Controls.Add(this.txt_factors);
             this.Controls.Add(this.txt_file_in);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -163,6 +186,8 @@
         private System.Windows.Forms.Button btn_file;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label txt_factors;
+        private System.Windows.Forms.Label label_factors;
     }
 }
 

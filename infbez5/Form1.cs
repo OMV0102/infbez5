@@ -71,6 +71,7 @@ namespace infbez5
             }
         }
 
+        // кнопка РАЗЛОЖИТЬ НА МНОЖИТЕЛИ
         private void btn_factor_Click(object sender, EventArgs e)
         {
             alg.find_factor(9223372036854775807);
@@ -83,6 +84,14 @@ namespace infbez5
             {
 
             }
+        }
+
+        private void txt_number_ValueChanged(object sender, EventArgs e)
+        {
+            txt_file_in.Text = txt_number.Value.ToString();
+            txt_number.Value = txt_number.Value;
+
+
         }
     }
 }
