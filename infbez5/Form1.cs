@@ -52,29 +52,37 @@ namespace infbez5
                         }
                         else
                         {
-                            MessageBox.Show("Считанное число должно быть в границах от " + txt_number.Minimum + " до " + txt_number.Maximum +"!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Считанное число не положительное или очень велико!\n Допустимый диапозон: от " + txt_number.Minimum + " до " + txt_number.Maximum +".", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Число из файла \"" + path + "\" не считалось!\nПроверьте данные в файле или выберите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Число из файла {" + path + "} НЕ считалось!\nПроверьте данные в файле (число должно быть целым) или выберите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Файл \"" + path + "\" пуст!\nПроверьте данные в файле или выберите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Файл {" + path + "} пуст!\nПроверьте данные в файле или выберите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Выбранного файла \"" + path + "\" не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выбранного файла {" + path + "} НЕ существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btn_factor_Click(object sender, EventArgs e)
         {
-            alg.find_factor(21);
+            alg.find_factor(9223372036854775807);
 
+        }
+
+        private void txt_number_Scroll(object sender, ScrollEventArgs e)
+        {
+            if(txt_number.Value == 0)
+            {
+
+            }
         }
     }
 }
