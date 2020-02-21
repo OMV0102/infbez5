@@ -50,7 +50,7 @@
             this.btn_factor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_factor.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_factor.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_factor.Location = new System.Drawing.Point(194, 283);
+            this.btn_factor.Location = new System.Drawing.Point(194, 247);
             this.btn_factor.Name = "btn_factor";
             this.btn_factor.Size = new System.Drawing.Size(172, 64);
             this.btn_factor.TabIndex = 0;
@@ -136,20 +136,22 @@
             // txt_factors
             // 
             this.txt_factors.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_factors.Location = new System.Drawing.Point(312, 372);
+            this.txt_factors.Location = new System.Drawing.Point(68, 428);
             this.txt_factors.Name = "txt_factors";
-            this.txt_factors.Size = new System.Drawing.Size(100, 116);
+            this.txt_factors.Size = new System.Drawing.Size(241, 40);
             this.txt_factors.TabIndex = 6;
             this.txt_factors.Text = "222555555";
+            this.txt_factors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_factors
             // 
             this.label_factors.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_factors.Location = new System.Drawing.Point(35, 372);
+            this.label_factors.Location = new System.Drawing.Point(43, 333);
             this.label_factors.Name = "label_factors";
             this.label_factors.Size = new System.Drawing.Size(233, 35);
             this.label_factors.TabIndex = 7;
             this.label_factors.Text = "Множители числа:";
+            this.label_factors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -184,8 +186,8 @@
         private System.Windows.Forms.Button btn_file;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label txt_factors;
         private System.Windows.Forms.Label label_factors;
+        public System.Windows.Forms.Label txt_factors;
     }
 }
 

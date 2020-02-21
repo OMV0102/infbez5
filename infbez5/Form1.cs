@@ -94,9 +94,6 @@ namespace infbez5
             alg.fact_list.Clear(); // очищаем от предыдущих множетелей
 
             alg.factorization(n); // запускаем факторизацию
-
-
-
         }
     }
 }

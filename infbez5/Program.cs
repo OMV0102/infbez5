@@ -72,6 +72,29 @@ namespace infbez5
         static public void factorization(Int64 n) 
         {
             alg.factor f;
+            Int64 mnoj = 1;
+            // Если число простое
+            if (n == 1 || n == 2 || n == 3 || n == 5 || n == 7 || n == 11 || n == 13 || is_simple(n) == true)
+            {
+                alg.addFactToList(n); // Добавить в список
+                alg.SortList(true); // Cортировка по возрастанию
+            }
+            else if(n % 2.0 == 0.0) // число не простое, но четное
+            {
+                do // избавляемся от четности
+                {
+                    alg.addFactToList(2);
+                    n /= 2;
+                } while (n % 2.0 == 0.0);
+
+                // ищем другие множители, запускаю факторизацию
+                do
+                {
+                    mnoj = alg.find_factor(n);
+                    alg.addFactToList(mnoj);
+                    n /= mnoj;
+                } while (n % mnoj != 0);
+            }
         }
 
         // Добавление найденного множителя в список
@@ -166,5 +189,29 @@ namespace infbez5
             return a;
         }
 
+        // Вывод множителей в строку
+        static public string listToString()
+        {
+            string result = "";
+            int N = alg.fact_list.Count();
+            for(int i = 0; i < N; i++)
+            {
+                result += alg.fact_list[i].num; // само число записали
+                if(alg.fact_list[i].deg > 1)
+                {
+                    result += "^" + fact_list[i].deg;
+                }
+                result += ", ";
+            }
+            return result;
+        }
+
+        // Сортировка списка с множителями по показателю по возрастанию/убыванию
+        // Параметр: true - по возрастанию, false - по убыванию
+        static public  void SortList(bool why)
+        {
+
+
+        }
     }
 }
