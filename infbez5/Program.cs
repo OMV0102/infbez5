@@ -81,19 +81,22 @@ namespace infbez5
             }
             else if(n % 2.0 == 0.0) // число не простое, но четное
             {
-                do // избавляемся от четности
+                
+                while (n % 2.0 == 0.0) // избавляемся от четности
                 {
                     alg.addFactToList(2);
                     n /= 2;
-                } while (n % 2.0 == 0.0);
+                }
 
-                // ищем другие множители, запускаю факторизацию
-                do
+                
+                
+                do  // ищем другие множители, запускаю факторизацию
                 {
                     mnoj = alg.find_factor(n);
                     alg.addFactToList(mnoj);
                     n /= mnoj;
-                } while (n % mnoj != 0);
+
+                } while (n % mnoj == 0);
             }
         }
 
