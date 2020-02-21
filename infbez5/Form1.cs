@@ -16,6 +16,7 @@ namespace infbez5
         public Form1()
         {
             InitializeComponent();
+            alg.fact_list = new List<alg.factor>(); // выделяем память под список множетелей
         }
 
         // кнопка ВЫБРАТЬ ФАЙЛ
@@ -74,22 +75,26 @@ namespace infbez5
         // кнопка РАЗЛОЖИТЬ НА МНОЖИТЕЛИ
         private void btn_factor_Click(object sender, EventArgs e)
         {
-            alg.find_factor(9223372036854775807);
-
-        }
-
-        private void txt_number_Scroll(object sender, ScrollEventArgs e)
-        {
-            if(txt_number.Value == 0)
+            // фича против бага в нумерик
+            // на случай если ввели значение и стерли
+            // оно опять появится
+            if (txt_number.Value == txt_number.Maximum)
             {
-
+                txt_number.Value--;
+                txt_number.Value++;
             }
-        }
+            else
+            {
+                txt_number.Value++;
+                txt_number.Value--;
+            }
 
-        private void txt_number_ValueChanged(object sender, EventArgs e)
-        {
-            txt_file_in.Text = txt_number.Value.ToString();
-            txt_number.Value = txt_number.Value;
+            Int64 n = (Int64)txt_number.Value;
+            
+            alg.fact_list.Clear(); // очищаем от предыдущих множетелей
+
+            alg.factorization(n); // запускаем факторизацию
+
 
 
         }

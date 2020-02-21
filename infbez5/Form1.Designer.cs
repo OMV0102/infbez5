@@ -63,7 +63,7 @@
             // 
             this.txt_number.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_number.Location = new System.Drawing.Point(128, 207);
+            this.txt_number.Location = new System.Drawing.Point(129, 182);
             this.txt_number.Maximum = new decimal(new int[] {
             -1530494977,
             232830,
@@ -75,7 +75,7 @@
             0,
             0});
             this.txt_number.Name = "txt_number";
-            this.txt_number.Size = new System.Drawing.Size(304, 44);
+            this.txt_number.Size = new System.Drawing.Size(327, 44);
             this.txt_number.TabIndex = 1;
             this.txt_number.TabStop = false;
             this.txt_number.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -84,8 +84,6 @@
             0,
             0,
             0});
-            this.txt_number.ValueChanged += new System.EventHandler(this.txt_number_ValueChanged);
-            this.txt_number.Scroll += new System.Windows.Forms.ScrollEventHandler(this.txt_number_Scroll);
             // 
             // txt_file_in
             // 

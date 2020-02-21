@@ -22,6 +22,15 @@ namespace infbez5
 
     static public class alg
     {
+        // Структура для хранения одного множителя
+        public struct factor 
+        {
+            public Int64 num; // множитель (показатель)
+            public Int64 deg; // степень  
+        }
+
+        public static List<factor> fact_list;
+
         // Проверка числа на простоту методом пробных делений и решета эратосфена
         static public bool is_simple(Int64 n)
         {
@@ -58,18 +67,40 @@ namespace infbez5
 
             return prostoe;
         }
-
-        public struct factor // Структура для хранения одного множителя
+        
+        // Функция разложения на множители (в список)
+        static public void factorization(Int64 n) 
         {
-            public static Int64 num;
-            public static Int64 deg;
+            alg.factor f;
         }
 
-        static public void factorization(Int64 n)
+        // Добавление найденного множителя в список
+        static public void addFactToList(Int64 num)
         {
+            bool isAdd = false;
+            int N = alg.fact_list.Count;
+            alg.factor f;
 
+            // Просматриваем уже имеющиеся множители 
+            // Если нашли увеличиваем степень у него
+            for (int i = 0; isAdd == false && i < N; i++)
+            {
+                if(alg.fact_list[i].num == num)
+                {
+                    f = alg.fact_list[i];
+                    f.deg++;
+                    alg.fact_list[i] = f;
+                    isAdd = true;
+                }
+            }
+
+            // Если просмотрели множители и не нашли, то добавляем в конец новый
+            f.num = num;
+            f.deg = 1;
+            alg.fact_list.Add(f);
         }
 
+        // Поиск одного множителя числа n
         static public Int64 find_factor (Int64 n)
         {
             // программный алгоритм на псевдокоде взят с 
