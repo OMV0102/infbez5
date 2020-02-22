@@ -34,6 +34,12 @@ namespace infbez5
         // Проверка числа на простоту методом пробных делений и решета эратосфена
         static public bool is_simple(Int64 n)
         {
+            // быстрая и простая проверочка на простоту
+            if (n == 1 || n == 2 || n == 3 || n == 5 || n == 7 || n == 11 || n == 13 || n == 17 || n == 19 || n == 23 || n==29 || n == 31)
+            {
+                return true;
+            }
+
             Int64 sqrt_n = (Int64)Math.Sqrt(n);
             List<Int64> d_list = new List<Int64>();
 
@@ -51,6 +57,7 @@ namespace infbez5
                     if(d_list[k] % d_list[i] == 0)
                     {
                         d_list.RemoveAt(k);
+                        k--;
                     }
                 }
             }
@@ -71,33 +78,45 @@ namespace infbez5
         // Функция разложения на множители (в список)
         static public void factorization(Int64 n) 
         {
-            alg.factor f;
             Int64 mnoj = 1;
-            // Если число простое
-            if (n == 1 || n == 2 || n == 3 || n == 5 || n == 7 || n == 11 || n == 13 || is_simple(n) == true)
+            bool one_add = false;
+            alg.fact_list.Clear(); // отчищаем от предыдущих множетелей
+
+            do
             {
-                alg.addFactToList(n); // Добавить в список
-                alg.SortList(true); // Cортировка по возрастанию
-            }
-            else if(n % 2.0 == 0.0) // число не простое, но четное
-            {
-                
-                while (n % 2.0 == 0.0) // избавляемся от четности
+                if (is_simple(n) == true) // Если число простое
                 {
-                    alg.addFactToList(2);
-                    n /= 2;
+                    mnoj = n;
+                    alg.addFactToList(mnoj); // Добавить в список
+                    n /= mnoj;
+                    if (mnoj == 1)
+                        one_add = true;
+                }
+                else // число не простое
+                {
+                    if (n % 2.0 == 0.0) // число не простое, но четное
+                    { 
+                        while (n % 2.0 == 0.0) // избавляемся от четности
+                        {
+                            mnoj = 2;
+                            alg.addFactToList(mnoj);
+                            n /= mnoj;
+                        }
+                    }
+                    else if( n % 2.0 != 0.0 && n > 8)
+                    {
+                        mnoj = alg.find_factor(n);
+                        alg.addFactToList(mnoj);
+                        n /= mnoj;
+                    }
                 }
 
-                
-                
-                do  // ищем другие множители, запускаю факторизацию
-                {
-                    mnoj = alg.find_factor(n);
-                    alg.addFactToList(mnoj);
-                    n /= mnoj;
+            } while (n != 1);
 
-                } while (n % mnoj == 0);
-            }
+            if(one_add == false)
+                alg.addFactToList(1);
+
+            alg.SortList(true); // Cортировка по возрастанию
         }
 
         // Добавление найденного множителя в список
@@ -120,10 +139,12 @@ namespace infbez5
                 }
             }
 
-            // Если просмотрели множители и не нашли, то добавляем в конец новый
-            f.num = num;
-            f.deg = 1;
-            alg.fact_list.Add(f);
+            if (isAdd == false) // Если просмотрели множители и не нашли, то добавляем в конец новый
+            {
+                f.num = num;
+                f.deg = 1;
+                alg.fact_list.Add(f);
+            }
         }
 
         // Поиск одного множителя числа n
@@ -133,8 +154,8 @@ namespace infbez5
             // https://ru.wikipedia.org/wiki/Метод_Лемана#Псевдокод
             // и переделан под C#
 
-            Int64 sqrt_n = (Int64)Math.Pow(n,1.0/3.0); // [n^1/3]
-            for (Int64 a = 2; a <= sqrt_n+2; a++)
+            Int64 sqrt_n = (Int64)Math.Sqrt(n); 
+            for (Int64 a = 2; a <= sqrt_n; a++)
             {
                 if(n % a == 0)
                 {
@@ -195,17 +216,33 @@ namespace infbez5
         // Вывод множителей в строку
         static public string listToString()
         {
-            string result = "";
+            string result = "{";
             int N = alg.fact_list.Count();
-            for(int i = 0; i < N; i++)
+
+            if (N == 1)
             {
-                result += alg.fact_list[i].num; // само число записали
-                if(alg.fact_list[i].deg > 1)
-                {
-                    result += "^" + fact_list[i].deg;
-                }
-                result += ", ";
+                result += " " + alg.fact_list[0].num + " ";
             }
+            else
+            {
+                for (int i = 0; i < N-1; i++)
+                {
+                    result += alg.fact_list[i].num; // само число записали
+                    if (alg.fact_list[i].deg > 1)
+                    {
+                        result += "^" + fact_list[i].deg;
+                    }
+                    result += ", ";
+                }
+                // отдельно выводим последний
+                result += alg.fact_list[N-1].num; // само число записали
+                if (alg.fact_list[N-1].deg > 1)
+                {
+                    result += "^" + fact_list[N-1].deg;
+                }
+            }
+
+            result += "}";
             return result;
         }
 

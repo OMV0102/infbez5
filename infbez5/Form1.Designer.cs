@@ -65,8 +65,8 @@
             this.txt_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txt_number.Location = new System.Drawing.Point(129, 182);
             this.txt_number.Maximum = new decimal(new int[] {
-            -1530494977,
-            232830,
+            -727379969,
+            232,
             0,
             0});
             this.txt_number.Minimum = new decimal(new int[] {
@@ -79,6 +79,7 @@
             this.txt_number.TabIndex = 1;
             this.txt_number.TabStop = false;
             this.txt_number.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_number.ThousandsSeparator = true;
             this.txt_number.Value = new decimal(new int[] {
             1,
             0,
@@ -136,11 +137,11 @@
             // txt_factors
             // 
             this.txt_factors.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_factors.Location = new System.Drawing.Point(68, 428);
+            this.txt_factors.Location = new System.Drawing.Point(114, 368);
             this.txt_factors.Name = "txt_factors";
             this.txt_factors.Size = new System.Drawing.Size(241, 40);
             this.txt_factors.TabIndex = 6;
-            this.txt_factors.Text = "222555555";
+            this.txt_factors.Text = "{ 1 }";
             this.txt_factors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_factors
@@ -155,6 +156,7 @@
             // 
             // Form1
             // 
+            this.AcceptButton = this.btn_factor;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;

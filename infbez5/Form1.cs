@@ -75,7 +75,7 @@ namespace infbez5
         // кнопка РАЗЛОЖИТЬ НА МНОЖИТЕЛИ
         private void btn_factor_Click(object sender, EventArgs e)
         {
-            // фича против бага в нумерик
+            // фича против бага в NumericUpDown
             // на случай если ввели значение и стерли
             // оно опять появится
             if (txt_number.Value == txt_number.Maximum)
@@ -90,10 +90,11 @@ namespace infbez5
             }
 
             Int64 n = (Int64)txt_number.Value;
-            
-            alg.fact_list.Clear(); // очищаем от предыдущих множетелей
+            txt_factors.Text = "{ }";
 
             alg.factorization(n); // запускаем факторизацию
+            
+            txt_factors.Text = alg.listToString();
         }
     }
 }
