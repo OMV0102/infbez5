@@ -7,7 +7,7 @@
     <ProjectGuid>{672A4240-FD25-4656-A118-2821DDF4B0D0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>infbez5</RootNamespace>
-    <AssemblyName>infbez5</AssemblyName>
+    <AssemblyName>Факторизация числа</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
