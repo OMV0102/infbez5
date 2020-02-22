@@ -16,7 +16,6 @@ namespace infbez5
         public Form1()
         {
             InitializeComponent();
-            alg.fact_list = new List<alg.factor>(); // выделяем память под список множетелей
         }
 
         // кнопка ВЫБРАТЬ ФАЙЛ
@@ -58,7 +57,7 @@ namespace infbez5
                     }
                     else
                     {
-                        MessageBox.Show("Число из файла {" + path + "} НЕ считалось!\nПроверьте данные в файле (число должно быть целым) или выберите другой файл.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Число из файла {" + path + "}\nНЕ считалось!\nПроверьте данные в файле:\n\t* Число должно быть целым,\n\t* Без пробелов и разделителей.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -91,10 +90,77 @@ namespace infbez5
 
             Int64 n = (Int64)txt_number.Value;
             txt_factors.Text = "{ }";
+            txt_iter.Text = "Итерации: 0";
+            txt_time.Text = "Время: 0";
 
+            // Отключаем форму на время факторизации и делаем ждущий курсор
+            this.Cursor = Cursors.WaitCursor;
+            this.Enabled = false;
+
+            DateTime start = DateTime.Now;
             alg.factorization(n); // запускаем факторизацию
-            
-            txt_factors.Text = alg.listToString();
+            DateTime end = DateTime.Now;
+            TimeSpan tm = end - start;
+
+            alg.SortList(alg.sortMode); // Cортировка по возрастанию
+            txt_factors.Text = alg.listToString(); // выводим множители на форму
+            txt_iter.Text = "Итерации: " + alg.iter;
+            if (tm.Minutes == 0)
+            {
+                if(tm.Seconds == 0)
+                {
+                    if (tm.Milliseconds == 0)
+                        txt_time.Text = "Время: < 1мс.";
+                    else
+                        txt_time.Text = "Время: " + tm.Milliseconds + "мс.";
+                }
+                else
+                    txt_time.Text = "Время: " + tm.Seconds + "с. " + tm.Milliseconds + "мс.";
+            }
+            else
+                txt_time.Text = "Время: " + tm.Minutes + "м. " + tm.Seconds + "с. " + tm.Milliseconds + "мс.";
+
+            // Включаем форму и делаем обычный курсор
+            this.Cursor = Cursors.Arrow;
+            this.Enabled = true;
+        }
+
+        // при загрузке формы
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            alg.fact_list = new List<alg.factor>(); // выделяем память под список множетелей
+            label_range.Text += txt_number.Minimum.ToString() + " до " + txt_number.Maximum.ToString("### ### ### ###") + ".";
+            alg.sortMode = true; // по дефолту сортировка по возрастанию
+            radioButton1.Checked = true;
+            radioButton2.Checked = false;
+        }
+
+        // галочка По возрастанию
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (alg.fact_list.Count > 1)
+            {
+                alg.sortMode = true;
+                alg.SortList(alg.sortMode); // Cортировка по возрастанию
+                txt_factors.Text = alg.listToString(); // выводим множители на форму
+            }
+        }
+
+        // галочка По убыванию
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (alg.fact_list.Count > 1)
+            {
+                alg.sortMode = false;
+                alg.SortList(alg.sortMode); // Cортировка по возрастанию
+                txt_factors.Text = alg.listToString(); // выводим множители на форму
+            }
+        }
+
+        private void txt_number_ValueChanged(object sender, EventArgs e)
+        {
+            alg.fact_list.Clear();
+            txt_factors.Text = "{ }";
         }
     }
 }

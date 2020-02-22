@@ -29,7 +29,10 @@ namespace infbez5
             public Int64 deg; // степень  
         }
 
-        public static List<factor> fact_list;
+        public static List<factor> fact_list; // Список , содержащий множители
+        public static bool sortMode; // Тип сортировки
+        public static int iter;
+
 
         // Проверка числа на простоту методом пробных делений и решета эратосфена
         static public bool is_simple(Int64 n)
@@ -37,6 +40,7 @@ namespace infbez5
             // быстрая и простая проверочка на простоту
             if (n == 1 || n == 2 || n == 3 || n == 5 || n == 7 || n == 11 || n == 13 || n == 17 || n == 19 || n == 23 || n==29 || n == 31)
             {
+                alg.iter++; // кол-во итерация + 1
                 return true;
             }
 
@@ -44,7 +48,7 @@ namespace infbez5
             List<Int64> d_list = new List<Int64>();
 
             // Заполнили список числами от 2 до корня из n
-            for (Int64 i = 2; i <= sqrt_n; i++)
+            for (Int64 i = 2; i <= sqrt_n+2; i++)
             {
                 d_list.Add(i);
             }
@@ -60,16 +64,20 @@ namespace infbez5
                         k--;
                     }
                 }
+                alg.iter++; // кол-во итерация + 1
             }
 
             bool prostoe = true;
 
+            // ищем какое простое число является множителем
+            // если не нашли, значит само число является простым множителем
             for(int j = 0; prostoe == true && j < d_list.Count; j++)
             {
                 if(n % d_list[j] == 0)
                 {
                     prostoe = false;
                 }
+                alg.iter++; // кол-во итерация + 1
             }
 
             return prostoe;
@@ -81,6 +89,7 @@ namespace infbez5
             Int64 mnoj = 1;
             bool one_add = false;
             alg.fact_list.Clear(); // отчищаем от предыдущих множетелей
+            alg.iter = 0;
 
             do
             {
@@ -110,13 +119,11 @@ namespace infbez5
                         n /= mnoj;
                     }
                 }
-
+                
             } while (n != 1);
 
-            if(one_add == false)
+            if (one_add == false)
                 alg.addFactToList(1);
-
-            alg.SortList(true); // Cортировка по возрастанию
         }
 
         // Добавление найденного множителя в список
@@ -153,6 +160,7 @@ namespace infbez5
             // программный алгоритм на псевдокоде взят с 
             // https://ru.wikipedia.org/wiki/Метод_Лемана#Псевдокод
             // и переделан под C#
+            // словесное описание в методичке
 
             Int64 sqrt_n = (Int64)Math.Sqrt(n); 
             for (Int64 a = 2; a <= sqrt_n; a++)
@@ -185,8 +193,10 @@ namespace infbez5
                         }
                     }
                 }
+                alg.iter++; // кол-во итерация + 1
             }
-            return -1;
+
+            return 1;
         }
 
         // Проверяет является ли число x полным квадратом натурального числа
@@ -248,9 +258,43 @@ namespace infbez5
 
         // Сортировка списка с множителями по показателю по возрастанию/убыванию
         // Параметр: true - по возрастанию, false - по убыванию
-        static public  void SortList(bool why)
+        static public  void SortList(bool mode)
         {
+            // Сортировка взята с сайта  https://metanit.com/sharp/tutorial/2.7.php
+            alg.factor temp;
+            int N = alg.fact_list.Count;
 
+            if (N > 1 && mode == true) // Сортировка по возрастанию
+            {
+                for (int i = 0; i < N - 1; i++)
+                {
+                    for (int j = i + 1; j < N; j++)
+                    {
+                        if (alg.fact_list[i].num > alg.fact_list[j].num)
+                        {
+                            temp = alg.fact_list[i];
+                            alg.fact_list[i] = alg.fact_list[j];
+                            alg.fact_list[j] = temp;
+                        }
+                    }
+                }
+            }
+            else if (N > 1 && mode == false) // Сортировка по убыванию
+            {
+                for (int i = 0; i < N - 1; i++)
+                {
+                    for (int j = i + 1; j < N; j++)
+                    {
+                        if (alg.fact_list[i].num < alg.fact_list[j].num)
+                        {
+                            temp = alg.fact_list[i];
+                            alg.fact_list[i] = alg.fact_list[j];
+                            alg.fact_list[j] = temp;
+                        }
+                    }
+                }
+            }
+            
 
         }
     }
