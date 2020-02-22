@@ -157,10 +157,9 @@ namespace infbez5
         // Поиск одного множителя числа n
         static public Int64 find_factor (Int64 n)
         {
-            // программный алгоритм на псевдокоде взят с 
+            // Псевдокод алгоритма: 
             // https://ru.wikipedia.org/wiki/Метод_Лемана#Псевдокод
-            // и переделан под C#
-            // словесное описание в методичке
+            // Словесное описание в методичке по ИБ
 
             Int64 sqrt_n = (Int64)Math.Sqrt(n); 
             for (Int64 a = 2; a <= sqrt_n; a++)
@@ -169,6 +168,7 @@ namespace infbez5
                 {
                     return a;
                 }
+                alg.iter++; // кол-во итерация + 1
             }
 
             for (Int64 k = 1; k <= sqrt_n; k++)
@@ -260,7 +260,8 @@ namespace infbez5
         // Параметр: true - по возрастанию, false - по убыванию
         static public  void SortList(bool mode)
         {
-            // Сортировка взята с сайта  https://metanit.com/sharp/tutorial/2.7.php
+            // Алгоритм сортировки с сайта  https://metanit.com/sharp/tutorial/2.7.php
+            // Код С# написан по алгоритму
             alg.factor temp;
             int N = alg.fact_list.Count;
 

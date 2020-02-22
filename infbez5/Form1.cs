@@ -97,15 +97,15 @@ namespace infbez5
             this.Cursor = Cursors.WaitCursor;
             this.Enabled = false;
 
-            DateTime start = DateTime.Now;
+            DateTime start = DateTime.Now; // старт замера времени
             alg.factorization(n); // запускаем факторизацию
-            DateTime end = DateTime.Now;
-            TimeSpan tm = end - start;
+            DateTime end = DateTime.Now; // конец замера времени
+            TimeSpan tm = end - start; // вычисляем разницу
 
             alg.SortList(alg.sortMode); // Cортировка по возрастанию
             txt_factors.Text = alg.listToString(); // выводим множители на форму
-            txt_iter.Text = "Итерации: " + alg.iter;
-            if (tm.Minutes == 0)
+            txt_iter.Text = "Итерации: " + alg.iter; // выводим итерации
+            if (tm.Minutes == 0) // выводим время разложения
             {
                 if(tm.Seconds == 0)
                 {
