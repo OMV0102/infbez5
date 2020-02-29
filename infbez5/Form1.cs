@@ -46,8 +46,8 @@ namespace infbez5
                     {
                         if (chislo >= txt_number.Minimum && chislo <= txt_number.Maximum)
                         {
-                            txt_file_in.Text = path;
                             txt_number.Value = chislo;
+                            txt_file_in.Text = path;
                             // Запуск Алгоритма факторизации
                         }
                         else
@@ -77,6 +77,7 @@ namespace infbez5
             // фича против бага в NumericUpDown
             // на случай если ввели значение и стерли
             // оно опять появится
+            String tmp = txt_file_in.Text;
             if (txt_number.Value == txt_number.Maximum)
             {
                 txt_number.Value--;
@@ -87,7 +88,8 @@ namespace infbez5
                 txt_number.Value++;
                 txt_number.Value--;
             }
-
+            txt_file_in.Text = tmp;
+            
             Int64 n = (Int64)txt_number.Value;
             txt_factors.Text = "{ }";
             txt_iter.Text = "Итерации: 0";
@@ -157,10 +159,12 @@ namespace infbez5
             }
         }
 
+        // при изменении значения
         private void txt_number_ValueChanged(object sender, EventArgs e)
         {
             alg.fact_list.Clear();
             txt_factors.Text = "{ }";
+            txt_file_in.Text = "";
         }
     }
 }
