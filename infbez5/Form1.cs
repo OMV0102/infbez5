@@ -107,20 +107,25 @@ namespace infbez5
             alg.SortList(alg.sortMode); // Cортировка по возрастанию
             txt_factors.Text = alg.listToString(); // выводим множители на форму
             txt_iter.Text = "Итерации: " + alg.iter; // выводим итерации
-            if (tm.Minutes == 0) // выводим время разложения
+            if (tm.Hours == 0)
             {
-                if(tm.Seconds == 0)
+                if (tm.Minutes == 0) // выводим время разложения
                 {
-                    if (tm.Milliseconds == 0)
-                        txt_time.Text = "Время: < 1мс.";
+                    if (tm.Seconds == 0)
+                    {
+                        if (tm.Milliseconds == 0)
+                            txt_time.Text = "Время: < 1мс.";
+                        else
+                            txt_time.Text = "Время: " + tm.Milliseconds + "мс.";
+                    }
                     else
-                        txt_time.Text = "Время: " + tm.Milliseconds + "мс.";
+                        txt_time.Text = "Время: " + tm.Seconds + "с. " + tm.Milliseconds + "мс.";
                 }
                 else
-                    txt_time.Text = "Время: " + tm.Seconds + "с. " + tm.Milliseconds + "мс.";
+                    txt_time.Text = "Время: " + tm.Minutes + "м. " + tm.Seconds + "с. " + tm.Milliseconds + "мс.";
             }
             else
-                txt_time.Text = "Время: " + tm.Minutes + "м. " + tm.Seconds + "с. " + tm.Milliseconds + "мс.";
+                txt_time.Text = "Время: " + tm.Hours + "ч. " + tm.Minutes + "м. " + tm.Seconds + "с. " + tm.Milliseconds + "мс.";
 
             // Включаем форму и делаем обычный курсор
             this.Cursor = Cursors.Arrow;
@@ -131,7 +136,7 @@ namespace infbez5
         private void Form1_Load(object sender, EventArgs e)
         {
             alg.fact_list = new List<alg.factor>(); // выделяем память под список множетелей
-            label_range.Text += txt_number.Minimum.ToString() + " до " + txt_number.Maximum.ToString("### ### ### ###") + ".";
+            label_range.Text += txt_number.Minimum.ToString() + " до " + txt_number.Maximum.ToString("### ### ### ### ### ###") + ".";
             alg.sortMode = true; // по дефолту сортировка по возрастанию
             radioButton1.Checked = true;
             radioButton2.Checked = false;

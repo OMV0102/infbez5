@@ -45,8 +45,8 @@
             this.txt_time = new System.Windows.Forms.Label();
             this.txt_iter = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.txt_number)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -77,8 +77,8 @@
             this.txt_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txt_number.Location = new System.Drawing.Point(105, 184);
             this.txt_number.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.txt_number.Minimum = new decimal(new int[] {
@@ -267,6 +267,18 @@
             this.panel1.Size = new System.Drawing.Size(175, 112);
             this.panel1.TabIndex = 18;
             // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton2.Location = new System.Drawing.Point(11, 69);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(131, 22);
+            this.radioButton2.TabIndex = 16;
+            this.radioButton2.Text = "По убыванию";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -280,18 +292,6 @@
             this.radioButton1.Text = "По возрастанию";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(11, 69);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(131, 22);
-            this.radioButton2.TabIndex = 16;
-            this.radioButton2.Text = "По убыванию";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // Form1
             // 
