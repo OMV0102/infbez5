@@ -74,7 +74,6 @@ namespace infbez5
         // кнопка РАЗЛОЖИТЬ НА МНОЖИТЕЛИ
         private void btn_factor_Click(object sender, EventArgs e)
         {
-            // фича против бага в NumericUpDown
             // на случай если ввели значение и стерли
             // оно опять появится
             String tmp = txt_file_in.Text;
